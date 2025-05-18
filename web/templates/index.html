@@ -1,7 +1,7 @@
 {{ define "index.html" }}
 <html>
   <head>
-    <title>Xray Checker</title>
+    <title>MoboVPN Status</title>
     <style>
       :root {
         --bg-color: #ffffff;
@@ -260,21 +260,13 @@
     </button>
 
     <div class="header-container">
-      <h1 class="header-title">Xray Checker</h1>
+      <h1 class="header-title">MoboVPN Status</h1>
       <span class="version-tag">{{.Version}}</span>
     </div>
 
     <div class="info-grid">
       <div class="info-card">
         <h3>Server Settings</h3>
-        <div class="info-item">
-          <span class="info-label">Server:</span>
-          <span class="info-value">{{.Host}}:{{.Port}}</span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">Proxy Start Port:</span>
-          <span class="info-value">{{.StartPort}}</span>
-        </div>
         {{if .Instance}}
         <div class="info-item">
           <span class="info-label">Instance:</span>
@@ -340,26 +332,8 @@
       </div>
     </div>
 
-    <div class="info-grid">
-      <a href="./metrics" class="documentation-link"> 📊 Metrics </a>
-      <a href="./health" class="documentation-link"> ❤️ Health </a>
-      <a
-        href="https://xray-checker.kutovoy.dev"
-        target="_blank"
-        class="documentation-link"
-      >
-        📚 Documentation
-      </a>
-    </div>
-
     {{ if .Endpoints }}
     <h2>Config Endpoints</h2>
-    <div class="info-box warning">
-      <strong>Important:</strong> The URLs listed below can be used for status
-      monitoring in systems like Uptime-Kuma. The endpoint will return status
-      200 OK if the proxy is working, and status 503 Service Unavailable if it's
-      not functioning.
-    </div>
     <ul class="endpoints">
       {{ range .Endpoints }}
       <li>
@@ -370,23 +344,15 @@
           {{ else }}
           <span class="status-icon">🔴</span>
           {{ end }}
-          <a href="{{.URL}}">{{.Name}}</a>
+          <a>{{.Name}}</a>
         </span>
-        <span class="proxy-port">(Proxy Port: {{.ProxyPort}})</span>
-        <button class="copy-button" onclick="copyToClipboard(this, '{{.URL}}')">
-          Copy URL
-        </button>
       </li>
       {{ end }}
     </ul>
     {{ end }}
 
     <div class="footer">
-      <a href="https://github.com/kutovoys/xray-checker" target="_blank"
-        >GitHub Repository</a
-      >
-      | Made with ❤️ by
-      <a href="https://github.com/kutovoys" target="_blank">kutovoys</a>
+      Copyright © 2023 <a href="https://imobotech.com/" target="_blank">iMobotech Project</a>. All rights reserved | version:0.1.5
     </div>
 
     <script>
